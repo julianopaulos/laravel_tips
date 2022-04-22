@@ -23,5 +23,9 @@ Route::get('/user/{id}', [TestController::class, 'listUser'])->where('id', '[0-9
 
 Route::get('/users', [TestController::class, 'listAllUsers']);
 
+Route::get('/user/create', [TestController::class, 'create']);
+
+Route::get('/user/store', [TestController::class, 'store']);
+
 
 #Route::get('/listagem-usuario', [UserController::class, 'listUser']);

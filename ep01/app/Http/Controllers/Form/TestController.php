@@ -10,11 +10,19 @@ class TestController extends Controller
 {
     public function listUser($id){
         $user = User::findOrFail($id);
-        return view('list_user', compact('user'));
+        return view('user.list_user', compact('user'));
     }
 
     public function listAllUsers(){
         $users = User::all();
-        return view('list_all_users', compact('users'));
+        return view('user.list_all_users', compact('users'));
+    }
+
+    public function create(){
+        return view('user.create');
+    }
+
+    public function store(Request $request){
+
     }
 }
