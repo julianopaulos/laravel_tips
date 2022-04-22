@@ -19,13 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user/{id}', [TestController::class, 'listUser'])->where('id', '[0-9]+');
+Route::get('/user/{id}', [TestController::class, 'listUser'])->name('user.list')->where('id', '[0-9]+');
 
-Route::get('/users', [TestController::class, 'listAllUsers']);
+Route::get('/users', [TestController::class, 'listAllUsers'])->name('users.listAll');
 
-Route::get('/user/create', [TestController::class, 'create']);
+Route::get('/user/create', [TestController::class, 'create'])->name('user.create');
 
-Route::get('/user/store', [TestController::class, 'store']);
+Route::post('/user/store', [TestController::class, 'store'])->name('user.store');
 
 
 #Route::get('/listagem-usuario', [UserController::class, 'listUser']);

@@ -7,18 +7,19 @@
     <title>Listagem de Usuários</title>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>#ID</th>
-                <th>Nome:</th>
-                <th>E-mail</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
+    <form action="{{ route('user.store') }}" method="post">
+        @csrf
+        <label for="name">Nome do usuário</label>
+        <input type="text" name="name" id="name" placeholder="Seu nome">
+
+        <label for="email">E-mail do usuário</label>
+        <input type="email" name="email" id="email" placeholder="Seu e-mail">
+
+        <label for="password">Senha do usuário</label>
+        <input type="password" name="password" id="password">
+
+        <input type="submit" value="Cadastrar usuário">
+    </form>
     </table>
 </body>
 </html>
