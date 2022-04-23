@@ -25,7 +25,16 @@ Route::get('/users', [TestController::class, 'listAllUsers'])->name('users.listA
 
 Route::get('/user/create', [TestController::class, 'create'])->name('user.create');
 
+Route::get('/user/update/{id}', [TestController::class, 'update'])->name('user.update');
+
+
+
 Route::post('/user/store', [TestController::class, 'store'])->name('user.store');
 
+
+Route::put('/user/edit/{user}', [TestController::class, 'edit'])->name('user.edit')->where('id', '[0-9]+');
+
+
+Route::delete('/user/{id}', [TestController::class, 'destroy'])->name('user.destroy')->where('id', '[0-9]+');
 
 #Route::get('/listagem-usuario', [UserController::class, 'listUser']);
