@@ -19,22 +19,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user/{id}', [TestController::class, 'listUser'])->name('user.list')->where('id', '[0-9]+');
+//Route::get('/user/{id}', [TestController::class, 'listUser'])->name('user.list')->where('id', '[0-9]+');
 
-Route::get('/users', [TestController::class, 'listAllUsers'])->name('users.listAll');
+//Route::get('/users', [TestController::class, 'listAllUsers'])->name('users.listAll');
 
-Route::get('/user/create', [TestController::class, 'create'])->name('user.create');
+//Route::get('/user/create', [TestController::class, 'create'])->name('user.create');
 
-Route::get('/user/update/{id}', [TestController::class, 'update'])->name('user.update');
-
-
-
-Route::post('/user/store', [TestController::class, 'store'])->name('user.store');
+//Route::get('/user/update/{id}', [TestController::class, 'update'])->name('user.update');
 
 
-Route::put('/user/edit/{user}', [TestController::class, 'edit'])->name('user.edit')->where('id', '[0-9]+');
+
+//Route::post('/user/store', [TestController::class, 'store'])->name('user.store');
 
 
-Route::delete('/user/{id}', [TestController::class, 'destroy'])->name('user.destroy')->where('id', '[0-9]+');
+//Route::put('/user/edit/{user}', [TestController::class, 'edit'])->name('user.edit')->where('id', '[0-9]+');
+
+
+//Route::delete('/user/{id}', [TestController::class, 'destroy'])->name('user.destroy')->where('id', '[0-9]+');
+
+//utilizando apenas essa linha, são criadas todas as rotas para o controller de usuário
+Route::resource('user', TestController::class);
 
 #Route::get('/listagem-usuario', [UserController::class, 'listUser']);
