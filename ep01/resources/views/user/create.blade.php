@@ -7,7 +7,7 @@
     <title>Listagem de Usuários</title>
 </head>
 <body>
-    <form action="{{ route('user.store') }}" method="post">
+    <form action="{{ route('users.store') }}" method="post">
         @csrf
         <label for="name">Nome do usuário</label>
         <input type="text" name="name" id="name" placeholder="Seu nome">

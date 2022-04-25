@@ -7,7 +7,7 @@
     <title>Edição de Usuário</title>
 </head>
 <body>
-    <form action="{{ route('user.edit', ['user' => $user->id]) }}" method="post">
+    <form action="{{ route('users.update', ['user' => $user->id]) }}" method="post">
         @csrf
         @method('PUT')
         <label for="name">Nome do usuário</label>

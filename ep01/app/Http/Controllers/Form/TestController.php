@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Form;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class TestController extends Controller
 {
@@ -15,7 +18,8 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('user.list_all_users', compact('users'));
     }
 
     /**
@@ -25,7 +29,7 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -36,7 +40,15 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -47,7 +59,7 @@ class TestController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user.list_user', compact('user'));
     }
 
     /**
@@ -58,7 +70,7 @@ class TestController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit_user', compact('user'));
     }
 
     /**
@@ -70,7 +82,24 @@ class TestController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)]
+        ]);
+
+        if(!$validator->fails()){
+            $user->name = $request->name;
+            $user->email = $request->email;
+        }
+
+        if($request->password){
+            $user->password = Hash::make($request->password);
+        }
+
+
+
+        $user->save();
+        return redirect()->route('users.index');
     }
 
     /**
@@ -81,6 +110,9 @@ class TestController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        #$user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }
