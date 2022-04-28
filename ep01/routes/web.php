@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Form\TestController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,10 @@ Route::get('/', function () {
 
 
 //Route::delete('/user/{id}', [TestController::class, 'destroy'])->name('user.destroy')->where('id', '[0-9]+');
+
+Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
+Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+
 
 //utilizando apenas essa linha, são criadas todas as rotas para o controller de usuário
 Route::resource('users', TestController::class);
