@@ -17,10 +17,12 @@ class PostController extends Controller
 
     public function store(Request $request){
         $post = new Post();
-        $post->title = $request->title;
+        /*$post->title = $request->title;
         $post->subtitle = $request->subtitle;
         $post->content = $request->content;
 
-        $post->save();
+        $post->save();*/
+        //bom para salvar muitos campos ao mesmo tempo, pois diminui legibilidade do código
+        $post->create($request->except(['_token']));
     }
 }
