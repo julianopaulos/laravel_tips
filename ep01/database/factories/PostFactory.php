@@ -15,7 +15,6 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'author' => $this->faker->unique()->numberBetween(10, User::count()),
             'title' => $this->faker->name(),
             'slug' => $this->faker->slug,
             'subtitle' => $this->faker->name(),

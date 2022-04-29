@@ -20,7 +20,6 @@ class Post extends Model
 
     public function setTitleAttribute($title){
         $this->attributes['title'] = $title;
-        $this->attributes['author'] = Post::factory()->author;
         $this->attributes['slug'] = Str::slug($title);
     }
 }
